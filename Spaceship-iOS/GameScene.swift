@@ -368,11 +368,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bulletCollidesWithEnemy(nodeA, enemy: nodeB)
             } else if catA == ColliderCategory.Spaceship.rawValue && catB == ColliderCategory.Enemy.rawValue {
                 /* 3 */
-                print("spaceshipCollidesEnemy", appendNewline: true)
                 spaceshipCollidesWithEnemy(nodeB)
             } else if catB == ColliderCategory.Spaceship.rawValue && catA == ColliderCategory.Enemy.rawValue {
                 /* 3 */
-                print("spaceshipCollidesEnemy", appendNewline: true)
                 spaceshipCollidesWithEnemy(nodeA)
             } else if catA == ColliderCategory.Spaceship.rawValue && catB == ColliderCategory.EnemyBullet.rawValue {
                 /* 4 */
@@ -638,14 +636,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func actionOnScreenMoved(location: CGPoint) {
-        
-    }
-    
-    
-    func actionOnScreenEnded(location: CGPoint) {
-        spaceshipHorizontalMovement = SpaceshipMovement.Stopped
-    }
     
     func startNewGame() {
         /* 1 */
@@ -655,9 +645,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.view?.presentScene(scene)
     }
     
-    
-    func actionOnScreenBegan(location: CGPoint) {
-        /* Called when a mouse click occurs */
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let location = touches.first?.locationInNode(self)
         /* 1 */
         if gameState == .Ready {
             if let startGameMessage = childNodeWithName("StartGame") {
@@ -674,7 +664,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* 3 */
         if gameState == .Playing {
-            if location.x >= size.width / 2 {
+            if location!.x >= size.width / 2 {
                 /* 4 */
                 spaceshipHorizontalMovement = SpaceshipMovement.Right
             } else {
@@ -682,43 +672,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spaceshipHorizontalMovement = SpaceshipMovement.Left
             }
         }
-    }
-    
-    
-    
-    #if os(iOS)
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let location = touches.first?.locationInNode(self)
-        actionOnScreenBegan(location!)
+
+        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let location = touches.first?.locationInNode(self)
-        actionOnScreenEnded(location!)
+        spaceshipHorizontalMovement = SpaceshipMovement.Stopped
+        
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let location = touches.first?.locationInNode(self)
-        actionOnScreenMoved(location!)
+       
+       
     }
     
-    #else
-    override func mouseDown(theEvent: NSEvent) {
-    /* Called when a mouse click occurs */
-    let location = theEvent.locationInNode(self)
-    actionOnScreenBegan(location)
-    }
-    
-    override func mouseUp(theEvent: NSEvent) {
-    let location = theEvent.locationInNode(self)
-    actionOnScreenEnded(location)
-    }
-    
-    override func mouseDragged(theEvent: NSEvent) {
-    let location = theEvent.locationInNode(self)
-    actionOnScreenMoved(location)
-    }
-    
-    #endif
     
 }

@@ -8,24 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		9DAC11C51B9CA7C100DD3227 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11C41B9CA7C100DD3227 /* AppDelegate.swift */; };
-		9DAC11C71B9CA7C100DD3227 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11C61B9CA7C100DD3227 /* GameScene.sks */; };
 		9DAC11C91B9CA7C100DD3227 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11C81B9CA7C100DD3227 /* GameScene.swift */; };
 		9DAC11CB1B9CA7C100DD3227 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11CA1B9CA7C100DD3227 /* GameViewController.swift */; };
 		9DAC11CE1B9CA7C100DD3227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11CC1B9CA7C100DD3227 /* Main.storyboard */; };
 		9DAC11D01B9CA7C100DD3227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11CF1B9CA7C100DD3227 /* Assets.xcassets */; };
 		9DAC11D31B9CA7C100DD3227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11D11B9CA7C100DD3227 /* LaunchScreen.storyboard */; };
+		9DAC11DB1B9CAA0300DD3227 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DA1B9CAA0300DD3227 /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
+		9DAC11DD1B9CAA2100DD3227 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DC1B9CAA2100DD3227 /* ProgressBarNode.swift */; settings = {ASSET_TAGS = (); }; };
+		9DAC11E91B9CAA6E00DD3227 /* BigExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11DF1B9CAA6E00DD3227 /* BigExplosion.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11EA1B9CAA6E00DD3227 /* Bullet.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E01B9CAA6E00DD3227 /* Bullet.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11EB1B9CAA6E00DD3227 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E11B9CAA6E00DD3227 /* Credits.rtf */; settings = {ASSET_TAGS = (); }; };
+		9DAC11EC1B9CAA6E00DD3227 /* EnemySmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E21B9CAA6E00DD3227 /* EnemySmokeTrail.sks */; settings = {ASSET_TAGS = (); }; };
+		9DAC11ED1B9CAA6E00DD3227 /* Explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E31B9CAA6E00DD3227 /* Explosion.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11EE1B9CAA6E00DD3227 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E41B9CAA6E00DD3227 /* GameOver.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11EF1B9CAA6E00DD3227 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E51B9CAA6E00DD3227 /* Message.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11F01B9CAA6E00DD3227 /* SmallExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E61B9CAA6E00DD3227 /* SmallExplosion.m4a */; settings = {ASSET_TAGS = (); }; };
+		9DAC11F11B9CAA6E00DD3227 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E71B9CAA6E00DD3227 /* SmokeTrail.sks */; settings = {ASSET_TAGS = (); }; };
+		9DAC11F21B9CAA6E00DD3227 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E81B9CAA6E00DD3227 /* spark.png */; settings = {ASSET_TAGS = (); }; };
+		9DAC11F41B9CAACC00DD3227 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11F31B9CAACC00DD3227 /* LabelNode.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9DAC11C11B9CA7C000DD3227 /* Spaceship-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spaceship-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAC11C41B9CA7C100DD3227 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9DAC11C61B9CA7C100DD3227 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		9DAC11C81B9CA7C100DD3227 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9DAC11CA1B9CA7C100DD3227 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9DAC11CD1B9CA7C100DD3227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DAC11CF1B9CA7C100DD3227 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DAC11D21B9CA7C100DD3227 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DAC11D41B9CA7C100DD3227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DAC11DA1B9CAA0300DD3227 /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		9DAC11DC1B9CAA2100DD3227 /* ProgressBarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarNode.swift; sourceTree = "<group>"; };
+		9DAC11DF1B9CAA6E00DD3227 /* BigExplosion.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = BigExplosion.m4a; sourceTree = "<group>"; };
+		9DAC11E01B9CAA6E00DD3227 /* Bullet.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bullet.m4a; sourceTree = "<group>"; };
+		9DAC11E11B9CAA6E00DD3227 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		9DAC11E21B9CAA6E00DD3227 /* EnemySmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemySmokeTrail.sks; sourceTree = "<group>"; };
+		9DAC11E31B9CAA6E00DD3227 /* Explosion.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Explosion.m4a; sourceTree = "<group>"; };
+		9DAC11E41B9CAA6E00DD3227 /* GameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameOver.m4a; sourceTree = "<group>"; };
+		9DAC11E51B9CAA6E00DD3227 /* Message.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Message.m4a; sourceTree = "<group>"; };
+		9DAC11E61B9CAA6E00DD3227 /* SmallExplosion.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmallExplosion.m4a; sourceTree = "<group>"; };
+		9DAC11E71B9CAA6E00DD3227 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		9DAC11E81B9CAA6E00DD3227 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		9DAC11F31B9CAACC00DD3227 /* LabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +82,11 @@
 		9DAC11C31B9CA7C000DD3227 /* Spaceship-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9DAC11DE1B9CAA6E00DD3227 /* Sounds */,
+				9DAC11DA1B9CAA0300DD3227 /* Enumerations.swift */,
+				9DAC11F31B9CAACC00DD3227 /* LabelNode.swift */,
+				9DAC11DC1B9CAA2100DD3227 /* ProgressBarNode.swift */,
 				9DAC11C41B9CA7C100DD3227 /* AppDelegate.swift */,
-				9DAC11C61B9CA7C100DD3227 /* GameScene.sks */,
 				9DAC11C81B9CA7C100DD3227 /* GameScene.swift */,
 				9DAC11CA1B9CA7C100DD3227 /* GameViewController.swift */,
 				9DAC11CC1B9CA7C100DD3227 /* Main.storyboard */,
@@ -68,6 +95,23 @@
 				9DAC11D41B9CA7C100DD3227 /* Info.plist */,
 			);
 			path = "Spaceship-iOS";
+			sourceTree = "<group>";
+		};
+		9DAC11DE1B9CAA6E00DD3227 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9DAC11DF1B9CAA6E00DD3227 /* BigExplosion.m4a */,
+				9DAC11E01B9CAA6E00DD3227 /* Bullet.m4a */,
+				9DAC11E11B9CAA6E00DD3227 /* Credits.rtf */,
+				9DAC11E21B9CAA6E00DD3227 /* EnemySmokeTrail.sks */,
+				9DAC11E31B9CAA6E00DD3227 /* Explosion.m4a */,
+				9DAC11E41B9CAA6E00DD3227 /* GameOver.m4a */,
+				9DAC11E51B9CAA6E00DD3227 /* Message.m4a */,
+				9DAC11E61B9CAA6E00DD3227 /* SmallExplosion.m4a */,
+				9DAC11E71B9CAA6E00DD3227 /* SmokeTrail.sks */,
+				9DAC11E81B9CAA6E00DD3227 /* spark.png */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,10 +171,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DAC11C71B9CA7C100DD3227 /* GameScene.sks in Resources */,
+				9DAC11F11B9CAA6E00DD3227 /* SmokeTrail.sks in Resources */,
+				9DAC11F01B9CAA6E00DD3227 /* SmallExplosion.m4a in Resources */,
+				9DAC11EE1B9CAA6E00DD3227 /* GameOver.m4a in Resources */,
+				9DAC11EA1B9CAA6E00DD3227 /* Bullet.m4a in Resources */,
+				9DAC11EC1B9CAA6E00DD3227 /* EnemySmokeTrail.sks in Resources */,
+				9DAC11F21B9CAA6E00DD3227 /* spark.png in Resources */,
+				9DAC11EB1B9CAA6E00DD3227 /* Credits.rtf in Resources */,
+				9DAC11EF1B9CAA6E00DD3227 /* Message.m4a in Resources */,
 				9DAC11D31B9CA7C100DD3227 /* LaunchScreen.storyboard in Resources */,
 				9DAC11D01B9CA7C100DD3227 /* Assets.xcassets in Resources */,
 				9DAC11CE1B9CA7C100DD3227 /* Main.storyboard in Resources */,
+				9DAC11ED1B9CAA6E00DD3227 /* Explosion.m4a in Resources */,
+				9DAC11E91B9CAA6E00DD3227 /* BigExplosion.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +196,10 @@
 			files = (
 				9DAC11C91B9CA7C100DD3227 /* GameScene.swift in Sources */,
 				9DAC11CB1B9CA7C100DD3227 /* GameViewController.swift in Sources */,
+				9DAC11F41B9CAACC00DD3227 /* LabelNode.swift in Sources */,
 				9DAC11C51B9CA7C100DD3227 /* AppDelegate.swift in Sources */,
+				9DAC11DB1B9CAA0300DD3227 /* Enumerations.swift in Sources */,
+				9DAC11DD1B9CAA2100DD3227 /* ProgressBarNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

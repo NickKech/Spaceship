@@ -13,19 +13,19 @@
 		9DAC11CE1B9CA7C100DD3227 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11CC1B9CA7C100DD3227 /* Main.storyboard */; };
 		9DAC11D01B9CA7C100DD3227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11CF1B9CA7C100DD3227 /* Assets.xcassets */; };
 		9DAC11D31B9CA7C100DD3227 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11D11B9CA7C100DD3227 /* LaunchScreen.storyboard */; };
-		9DAC11DB1B9CAA0300DD3227 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DA1B9CAA0300DD3227 /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
-		9DAC11DD1B9CAA2100DD3227 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DC1B9CAA2100DD3227 /* ProgressBarNode.swift */; settings = {ASSET_TAGS = (); }; };
-		9DAC11E91B9CAA6E00DD3227 /* BigExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11DF1B9CAA6E00DD3227 /* BigExplosion.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11EA1B9CAA6E00DD3227 /* Bullet.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E01B9CAA6E00DD3227 /* Bullet.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11EB1B9CAA6E00DD3227 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E11B9CAA6E00DD3227 /* Credits.rtf */; settings = {ASSET_TAGS = (); }; };
-		9DAC11EC1B9CAA6E00DD3227 /* EnemySmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E21B9CAA6E00DD3227 /* EnemySmokeTrail.sks */; settings = {ASSET_TAGS = (); }; };
-		9DAC11ED1B9CAA6E00DD3227 /* Explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E31B9CAA6E00DD3227 /* Explosion.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11EE1B9CAA6E00DD3227 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E41B9CAA6E00DD3227 /* GameOver.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11EF1B9CAA6E00DD3227 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E51B9CAA6E00DD3227 /* Message.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11F01B9CAA6E00DD3227 /* SmallExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E61B9CAA6E00DD3227 /* SmallExplosion.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DAC11F11B9CAA6E00DD3227 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E71B9CAA6E00DD3227 /* SmokeTrail.sks */; settings = {ASSET_TAGS = (); }; };
-		9DAC11F21B9CAA6E00DD3227 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E81B9CAA6E00DD3227 /* spark.png */; settings = {ASSET_TAGS = (); }; };
-		9DAC11F41B9CAACC00DD3227 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11F31B9CAACC00DD3227 /* LabelNode.swift */; settings = {ASSET_TAGS = (); }; };
+		9DAC11DB1B9CAA0300DD3227 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DA1B9CAA0300DD3227 /* Enumerations.swift */; };
+		9DAC11DD1B9CAA2100DD3227 /* ProgressBarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11DC1B9CAA2100DD3227 /* ProgressBarNode.swift */; };
+		9DAC11E91B9CAA6E00DD3227 /* BigExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11DF1B9CAA6E00DD3227 /* BigExplosion.m4a */; };
+		9DAC11EA1B9CAA6E00DD3227 /* Bullet.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E01B9CAA6E00DD3227 /* Bullet.m4a */; };
+		9DAC11EB1B9CAA6E00DD3227 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E11B9CAA6E00DD3227 /* Credits.rtf */; };
+		9DAC11EC1B9CAA6E00DD3227 /* EnemySmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E21B9CAA6E00DD3227 /* EnemySmokeTrail.sks */; };
+		9DAC11ED1B9CAA6E00DD3227 /* Explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E31B9CAA6E00DD3227 /* Explosion.m4a */; };
+		9DAC11EE1B9CAA6E00DD3227 /* GameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E41B9CAA6E00DD3227 /* GameOver.m4a */; };
+		9DAC11EF1B9CAA6E00DD3227 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E51B9CAA6E00DD3227 /* Message.m4a */; };
+		9DAC11F01B9CAA6E00DD3227 /* SmallExplosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E61B9CAA6E00DD3227 /* SmallExplosion.m4a */; };
+		9DAC11F11B9CAA6E00DD3227 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E71B9CAA6E00DD3227 /* SmokeTrail.sks */; };
+		9DAC11F21B9CAA6E00DD3227 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC11E81B9CAA6E00DD3227 /* spark.png */; };
+		9DAC11F41B9CAACC00DD3227 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC11F31B9CAACC00DD3227 /* LabelNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */

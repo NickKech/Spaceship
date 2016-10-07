@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     /* 5 */
     // This property indicates the movement's direction of the spaceship (Left, Right or Stopped)
-    var spaceshipHorizontalMovement = SpaceshipMovement.Stopped
+    var spaceshipHorizontalMovement = SpaceshipMovement.stopped
     
     /* 1 */
     // Sprite of the shield's energy (Progress Bar)
@@ -56,12 +56,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // This property indicates (determines) the game states (Ready, Playing or GameOver)
-    var gameState: GameState = .Ready
+    var gameState: GameState = .ready
     
     
     
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* 1 */
         addBackground()
         
@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 1 */
         spaceship = SKSpriteNode(imageNamed: "Plane")
         spaceship.name = "Plane"
-        spaceship.zPosition = zOrderValue.Spaceship.rawValue
+        spaceship.zPosition = zOrderValue.spaceship.rawValue
         spaceship.position = CGPoint(x: size.width * 0.50, y: spaceship.size.height * 1.5)
         addChild(spaceship)
         
@@ -107,11 +107,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.physicsBody?.allowsRotation = false
         spaceship.physicsBody?.usesPreciseCollisionDetection = true
         /* 3 Sets the category of the spaceship's physics-body.*/
-        spaceship.physicsBody?.categoryBitMask = ColliderCategory.Spaceship.rawValue
+        spaceship.physicsBody?.categoryBitMask = ColliderCategory.spaceship.rawValue
         /* 4 The spaceship must collides with enemy’s spaceships and bullets.*/
-        spaceship.physicsBody?.collisionBitMask = ColliderCategory.EnemyBullet.rawValue | ColliderCategory.Enemy.rawValue
+        spaceship.physicsBody?.collisionBitMask = ColliderCategory.enemyBullet.rawValue | ColliderCategory.enemy.rawValue
         /* 5 When the spaceship collides with enemy’s spaceships and bullets, the "Contact Delegate" must be called.*/
-        spaceship.physicsBody?.contactTestBitMask = ColliderCategory.EnemyBullet.rawValue | ColliderCategory.Enemy.rawValue
+        spaceship.physicsBody?.contactTestBitMask = ColliderCategory.enemyBullet.rawValue | ColliderCategory.enemy.rawValue
         
         /* 3 */
         let smokeTrail = SKEmitterNode(fileNamed: "SmokeTrail")
@@ -124,43 +124,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func autoFire() {
         /* 1 */
-        let spawn = SKAction.runBlock() {
+        let spawn = SKAction.run() {
             self.addSpaceshipBullet()
         }
         
         /* 2 */
-        let delay = SKAction.waitForDuration(1.0)
+        let delay = SKAction.wait(forDuration: 1.0)
         
         /* 3 */
         let sequence = SKAction.sequence([spawn, delay])
         
         /* 4 */
-        let forever = SKAction.repeatActionForever(sequence)
+        let forever = SKAction.repeatForever(sequence)
         
         /* 5 */
-        runAction(forever, withKey: "autofire")
+        run(forever, withKey: "autofire")
     }
     
     func addSpaceshipBullet() {
         /* 1 */
         let bullet = SKSpriteNode(imageNamed: "PlaneBullet")
         bullet.name = "PlaneBullet"
-        bullet.zPosition = zOrderValue.Spaceship.rawValue
+        bullet.zPosition = zOrderValue.spaceship.rawValue
         bullet.position = CGPoint(x: spaceship.position.x, y: spaceship.position.y + spaceship.size.height / 2)
         addChild(bullet)
         
         /* 2 */
-        bullet.physicsBody = SKPhysicsBody(rectangleOfSize: bullet.size)
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
         bullet.physicsBody?.usesPreciseCollisionDetection = true
         bullet.physicsBody?.allowsRotation = false
         
         /* 3 */
-        bullet.physicsBody?.categoryBitMask = ColliderCategory.SpaceshipBullet.rawValue
-        bullet.physicsBody?.collisionBitMask = ColliderCategory.Enemy.rawValue
-        bullet.physicsBody?.contactTestBitMask = ColliderCategory.Enemy.rawValue
+        bullet.physicsBody?.categoryBitMask = ColliderCategory.spaceshipBullet.rawValue
+        bullet.physicsBody?.collisionBitMask = ColliderCategory.enemy.rawValue
+        bullet.physicsBody?.contactTestBitMask = ColliderCategory.enemy.rawValue
         /* 4 */
         let target = CGPoint(x: bullet.position.x, y: size.height * 1.25)
-        let move = SKAction.moveTo(target, duration: 2.0)
+        let move = SKAction.move(to: target, duration: 2.0)
         
         /* 5 */
         let remove = SKAction.removeFromParent()
@@ -169,27 +169,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sequence = SKAction.sequence([soundBullet, move, remove])
         
         /* 7 */
-        bullet.runAction(sequence)
+        bullet.run(sequence)
     }
     
     
     func initEnemies() {
         /*1 */
-        let spawn = SKAction.runBlock() {
+        let spawn = SKAction.run() {
             self.addEnemy()
         }
         
         /* 2 */
-        let delay = SKAction.waitForDuration(1.5)
+        let delay = SKAction.wait(forDuration: 1.5)
         
         /* 3 */
         let sequence = SKAction.sequence([spawn, delay])
         
         /* 4 */
-        let forever = SKAction.repeatActionForever(sequence)
+        let forever = SKAction.repeatForever(sequence)
         
         /* 5 */
-        runAction(forever, withKey: "SpawnEnemies")
+        run(forever, withKey: "SpawnEnemies")
     }
     
     func addEnemy(){
@@ -200,7 +200,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 2 */
         let enemy = SKSpriteNode(imageNamed: "Enemy")
         enemy.name = "Enemy"
-        enemy.zPosition = zOrderValue.Spaceship.rawValue
+        enemy.zPosition = zOrderValue.spaceship.rawValue
         enemy.position = start
         addChild(enemy)
         
@@ -209,8 +209,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.allowsRotation = false
         
         /* 4 */
-        enemy.physicsBody?.categoryBitMask = ColliderCategory.Enemy.rawValue
-        enemy.physicsBody?.collisionBitMask = ColliderCategory.SpaceshipBullet.rawValue | ColliderCategory.Spaceship.rawValue
+        enemy.physicsBody?.categoryBitMask = ColliderCategory.enemy.rawValue
+        enemy.physicsBody?.collisionBitMask = ColliderCategory.spaceshipBullet.rawValue | ColliderCategory.spaceship.rawValue
         //enemy.physicsBody?.contactTestBitMask = ColliderCategory.SpaceshipBullet.rawValue | ColliderCategory.Spaceship.rawValue
         
         /* 5 */
@@ -219,7 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.addChild(smoke!)
         
         /* 6 */
-        let move = SKAction.moveTo(end, duration: 5.0)
+        let move = SKAction.move(to: end, duration: 5.0)
         
         /* 7 */
         let remove = SKAction.removeFromParent()
@@ -228,7 +228,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sequence = SKAction.sequence([move, remove])
         
         /* 9 */
-        enemy.runAction(sequence)
+        enemy.run(sequence)
         
         /* Fires Enemy */
         
@@ -236,40 +236,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func enemyAutofire(enemy: SKSpriteNode) {
+    func enemyAutofire(_ enemy: SKSpriteNode) {
         /* 1 */
-        let secs = NSTimeInterval(randomBetween(1, max: 3))
-        let wait = SKAction.waitForDuration(secs)
+        let secs = TimeInterval(randomBetween(1, max: 3))
+        let wait = SKAction.wait(forDuration: secs)
         
         /* 2 */
-        let fire = SKAction.runBlock() {
+        let fire = SKAction.run() {
             self.addEnemyBullet(enemy)
         }
         
         /* 3 */
-        runAction(SKAction.sequence([wait, fire]))
+        run(SKAction.sequence([wait, fire]))
     }
     
-    func addEnemyBullet(enemy: SKSpriteNode) {
+    func addEnemyBullet(_ enemy: SKSpriteNode) {
         let bullet = SKSpriteNode(imageNamed: "EnemyBullet")
         bullet.name = "EnemyBullet"
-        bullet.zPosition = zOrderValue.Spaceship.rawValue
+        bullet.zPosition = zOrderValue.spaceship.rawValue
         bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y - enemy.size.height / 2)
         addChild(bullet)
         
         /* 2 */
-        bullet.physicsBody = SKPhysicsBody(rectangleOfSize: bullet.size)
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
         bullet.physicsBody?.usesPreciseCollisionDetection = true
         bullet.physicsBody?.allowsRotation = false
         
         /* 3 */
-        bullet.physicsBody?.categoryBitMask = ColliderCategory.EnemyBullet.rawValue
-        bullet.physicsBody?.collisionBitMask = ColliderCategory.Spaceship.rawValue
+        bullet.physicsBody?.categoryBitMask = ColliderCategory.enemyBullet.rawValue
+        bullet.physicsBody?.collisionBitMask = ColliderCategory.spaceship.rawValue
         //bullet.physicsBody?.contactTestBitMask = ColliderCategory.Spaceship.rawValue
         
         /* 4 */
         let target = CGPoint(x: bullet.position.x, y: -125)
-        let move = SKAction.moveTo(target, duration: 2.0)
+        let move = SKAction.move(to: target, duration: 2.0)
         
         /* 5 */
         let remove = SKAction.removeFromParent()
@@ -278,7 +278,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sequence = SKAction.sequence([move, remove])
         
         /* 7 */
-        bullet.runAction(sequence)
+        bullet.run(sequence)
     }
     
     
@@ -286,21 +286,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: - Library
-    func randomBetween(min: UInt32, max: UInt32) -> CGFloat {
+    func randomBetween(_ min: UInt32, max: UInt32) -> CGFloat {
         return CGFloat(arc4random_uniform(max + 1 - min) + min)
     }
     
-    func showMessage(imagedNamed: String) {
+    func showMessage(_ imagedNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(imageNamed: imagedNamed)
-        panel.zPosition = zOrderValue.Message.rawValue
+        panel.zPosition = zOrderValue.message.rawValue
         panel.position = CGPoint(x: size.width * 0.5, y: -size.height)
         panel.name = imagedNamed
         addChild(panel)
         
         /* 2 */
-        let move = SKAction.moveTo(CGPointMake(size.width * 0.5, size.height / 2), duration: 0.5)
-        panel.runAction(SKAction.sequence([soundMessage, move]))
+        let move = SKAction.move(to: CGPoint(x: size.width * 0.5, y: size.height / 2), duration: 0.5)
+        panel.run(SKAction.sequence([soundMessage, move]))
     }
     
     
@@ -313,24 +313,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 1 */
         scoreLabel.text = "Score: 0"
         scoreLabel.fontSize = 32
-        scoreLabel.fontColor = SKColor.yellowColor()
+        scoreLabel.fontColor = SKColor.yellow
         scoreLabel.shadowColor = SKColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.50)
-        scoreLabel.zPosition = zOrderValue.Hud.rawValue
+        scoreLabel.zPosition = zOrderValue.hud.rawValue
         scoreLabel.position = CGPoint(x: size.width * 0.25, y: size.height - 32)
         addChild(scoreLabel)
         
         /* 2 */
         energyLabel.text = "Energy: "
         energyLabel.fontSize = 32
-        energyLabel.fontColor = SKColor.yellowColor()
+        energyLabel.fontColor = SKColor.yellow
         energyLabel.shadowColor = SKColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.50)
-        energyLabel.zPosition = zOrderValue.Hud.rawValue
+        energyLabel.zPosition = zOrderValue.hud.rawValue
         energyLabel.position = CGPoint(x: size.width * 0.60, y: size.height - 32)
         addChild(energyLabel)
         
         /* 3 */
         shieldProgressbar = ProgressBarNode()
-        shieldProgressbar.zPosition = zOrderValue.Hud.rawValue
+        shieldProgressbar.zPosition = zOrderValue.hud.rawValue
         shieldProgressbar.position = CGPoint(x: size.width * 0.7, y: size.height - 24)
         addChild(shieldProgressbar)
     }
@@ -348,8 +348,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
     }
     
-    func didBeginContact(contact: SKPhysicsContact) {
-        if gameState != .Playing {
+    func didBegin(_ contact: SKPhysicsContact) {
+        if gameState != .playing {
             return
         }
         
@@ -360,22 +360,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let catA = contact.bodyA.categoryBitMask;
             let catB = contact.bodyB.categoryBitMask;
             
-            if catA == ColliderCategory.Enemy.rawValue && catB == ColliderCategory.SpaceshipBullet.rawValue {
+            if catA == ColliderCategory.enemy.rawValue && catB == ColliderCategory.spaceshipBullet.rawValue {
                 /* 2 */
                 bulletCollidesWithEnemy(nodeB, enemy: nodeA)
-            } else  if catB == ColliderCategory.Enemy.rawValue && catA == ColliderCategory.SpaceshipBullet.rawValue {
+            } else  if catB == ColliderCategory.enemy.rawValue && catA == ColliderCategory.spaceshipBullet.rawValue {
                 /* 2 */
                 bulletCollidesWithEnemy(nodeA, enemy: nodeB)
-            } else if catA == ColliderCategory.Spaceship.rawValue && catB == ColliderCategory.Enemy.rawValue {
+            } else if catA == ColliderCategory.spaceship.rawValue && catB == ColliderCategory.enemy.rawValue {
                 /* 3 */
                 spaceshipCollidesWithEnemy(nodeB)
-            } else if catB == ColliderCategory.Spaceship.rawValue && catA == ColliderCategory.Enemy.rawValue {
+            } else if catB == ColliderCategory.spaceship.rawValue && catA == ColliderCategory.enemy.rawValue {
                 /* 3 */
                 spaceshipCollidesWithEnemy(nodeA)
-            } else if catA == ColliderCategory.Spaceship.rawValue && catB == ColliderCategory.EnemyBullet.rawValue {
+            } else if catA == ColliderCategory.spaceship.rawValue && catB == ColliderCategory.enemyBullet.rawValue {
                 /* 4 */
                 bulletCollidesWithSpaceship(nodeB)
-            } else if catB == ColliderCategory.Spaceship.rawValue && catA == ColliderCategory.EnemyBullet.rawValue {
+            } else if catB == ColliderCategory.spaceship.rawValue && catA == ColliderCategory.enemyBullet.rawValue {
                 /* 4 */
                 bulletCollidesWithSpaceship(nodeA)
             }
@@ -385,10 +385,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateScore() {
-        score++
+        score += 1
     }
     
-    func explosionAt(location: CGPoint, scale: CGFloat) {
+    func explosionAt(_ location: CGPoint, scale: CGFloat) {
         /* 1 */
         var textures = [SKTexture]()
         for index in 1 ... 5 {
@@ -399,27 +399,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* 2 */
         let explosion = SKSpriteNode(texture: SKTexture(imageNamed: "Explosion-1"))
         explosion.position = location
-        explosion.zPosition = zOrderValue.Explosion.rawValue
+        explosion.zPosition = zOrderValue.explosion.rawValue
         explosion.setScale(scale)
         addChild(explosion)
         
         /* 3 */
-        let animation = SKAction.animateWithTextures(textures, timePerFrame: 0.10)
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.10)
         /* 4 */
         let remove = SKAction.removeFromParent()
         /* 5 */
         let sequence = SKAction.sequence([animation, remove])
         /* 6 */
-        explosion.runAction(sequence)
+        explosion.run(sequence)
     }
     
     
-    func bulletCollidesWithEnemy(bullet: SKNode, enemy: SKNode) {
+    func bulletCollidesWithEnemy(_ bullet: SKNode, enemy: SKNode) {
         /* 1 */
         explosionAt(enemy.position, scale: 0.75)
         
         /* 2 */
-        runAction(soundExplosion)
+        run(soundExplosion)
         
         /* 3 */
         bullet.removeFromParent()
@@ -430,18 +430,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func spaceshipCollidesWithEnemy(enemy: SKNode) {
+    func spaceshipCollidesWithEnemy(_ enemy: SKNode) {
         /* 1 */
         explosionAt(enemy.position, scale: 0.75)
         
         /* 2 */
-        runAction(soundExplosion)
+        run(soundExplosion)
         
         /* 3 */
         enemy.removeFromParent()
         
         /* 4 */
-        removeActionForKey("autofire")
+        removeAction(forKey: "autofire")
         
         /* 5*/
         explosionAt(spaceship.position, scale: 1.0)
@@ -450,7 +450,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.removeFromParent()
         
         /* 7 */
-        runAction(soundBigExplosion)
+        run(soundBigExplosion)
         
         /* Reset shield's energy */
         shieldProgressbar.empty()
@@ -461,15 +461,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func spaceshipCollidesEnemy(ship: SKNode, enemy: SKNode) {
+    func spaceshipCollidesEnemy(_ ship: SKNode, enemy: SKNode) {
         /* 1 */
         explosionAt(enemy.position, scale: 0.75)
         
         /* 2 */
-        runAction(soundExplosion)
+        run(soundExplosion)
         
         /* 3 */
-        removeActionForKey("autofire")
+        removeAction(forKey: "autofire")
         
         /* 4 */
         ship.removeFromParent()
@@ -482,7 +482,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         explosionAt(ship.position, scale: 1.0)
         
         /* 6 */
-        runAction(soundBigExplosion)
+        run(soundBigExplosion)
         
         /* Game Over */
         gameOver()
@@ -490,18 +490,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         /* 1 */
-        gameState = .GameOver
+        gameState = .gameOver
         
         /* 2 */
         removeAllActions()
         
         /* 3 */
-        enumerateChildNodesWithName("Enemy"){ (child, index) in
+        enumerateChildNodes(withName: "Enemy"){ (child, index) in
             child.removeAllActions()
             child.removeFromParent()
         }
         
-        enumerateChildNodesWithName("EnemyBullet"){ (child, index) in
+        enumerateChildNodes(withName: "EnemyBullet"){ (child, index) in
             child.removeAllActions()
             child.removeFromParent()
         }
@@ -511,12 +511,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func bulletCollidesSpaceship(bullet: SKNode, ship: SKNode) {
+    func bulletCollidesSpaceship(_ bullet: SKNode, ship: SKNode) {
         /* 1 */
         explosionAt(bullet.position, scale: 0.25)
         
         /* 2 */
-        runAction(soundSmallExplosion)
+        run(soundSmallExplosion)
         
         /* 3 */
         bullet.removeFromParent()
@@ -527,7 +527,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosionAt(ship.position, scale: 1.0)
             
             /* 7 */
-            runAction(soundBigExplosion)
+            run(soundBigExplosion)
             
             /* Game Over */
             gameOver()
@@ -536,12 +536,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func bulletCollidesWithSpaceship(bullet: SKNode) {
+    func bulletCollidesWithSpaceship(_ bullet: SKNode) {
         /* 1 */
         explosionAt(bullet.position, scale: 0.25)
         
         /* 2 */
-        runAction(soundSmallExplosion)
+        run(soundSmallExplosion)
         
         /* 3 */
         bullet.removeFromParent()
@@ -552,7 +552,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             explosionAt(spaceship.position, scale: 1.0)
             
             /* 7 */
-            runAction(soundBigExplosion)
+            run(soundBigExplosion)
             
             /* Game Over */
             gameOver()
@@ -570,9 +570,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /* 3 */
             let background = SKSpriteNode(imageNamed: "Background")
             background.name = "Background"
-            background.anchorPoint = CGPointZero
+            background.anchorPoint = CGPoint.zero
             background.position = CGPoint(x: 0, y: CGFloat(index) * size.height)
-            background.zPosition = zOrderValue.Background.rawValue
+            background.zPosition = zOrderValue.background.rawValue
             backgroundLayer.addChild(background)
         }
     }
@@ -583,9 +583,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundLayer.position = CGPoint(x: 0, y: backgroundLayer.position.y + CGFloat(yStep))
         
         /* 2 */
-        backgroundLayer.enumerateChildNodesWithName("Background"){ (child, index) in
+        backgroundLayer.enumerateChildNodes(withName: "Background"){ (child, index) in
             /* 3 */
-            let backgroundPosition = self.backgroundLayer.convertPoint(child.position, toNode: self)
+            let backgroundPosition = self.backgroundLayer.convert(child.position, to: self)
             /* 4 */
             if backgroundPosition.y <= -child.frame.size.height {
                 child.position = CGPoint(x: child.position.x, y: child.position.y + child.frame.size.height * 2)
@@ -594,7 +594,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func moveSpaceshipBy(distance: CGFloat) {
+    func moveSpaceshipBy(_ distance: CGFloat) {
         /* 1 */
         let maxX = size.width - spaceship.size.width / 2
         let minX = spaceship.size.width / 2
@@ -613,9 +613,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
-        if gameState == .Playing {
+        if gameState == .playing {
             
             /* 1 */
             if lastUpdate == 0.0 {
@@ -628,9 +628,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             /* 2 */
             scrollBackground()
             
-            if spaceshipHorizontalMovement == SpaceshipMovement.Left {
+            if spaceshipHorizontalMovement == SpaceshipMovement.left {
                 moveSpaceshipBy(-spaceshipHorizontalSpeed)
-            } else if spaceshipHorizontalMovement == SpaceshipMovement.Right {
+            } else if spaceshipHorizontalMovement == SpaceshipMovement.right {
                 moveSpaceshipBy(spaceshipHorizontalSpeed)
             }
         }
@@ -646,42 +646,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let location = touches.first?.locationInNode(self)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let location = touches.first?.location(in: self)
         /* 1 */
-        if gameState == .Ready {
-            if let startGameMessage = childNodeWithName("StartGame") {
-                gameState = .Playing
+        if gameState == .ready {
+            if let startGameMessage = childNode(withName: "StartGame") {
+                gameState = .playing
                 startGameMessage.removeFromParent()
                 startGame()
             }
         }
         
         /* 2 */
-        if gameState == .GameOver {
+        if gameState == .gameOver {
             startNewGame()
         }
         
         /* 3 */
-        if gameState == .Playing {
+        if gameState == .playing {
             if location!.x >= size.width / 2 {
                 /* 4 */
-                spaceshipHorizontalMovement = SpaceshipMovement.Right
+                spaceshipHorizontalMovement = SpaceshipMovement.right
             } else {
                 /* 5 */
-                spaceshipHorizontalMovement = SpaceshipMovement.Left
+                spaceshipHorizontalMovement = SpaceshipMovement.left
             }
         }
 
         
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        spaceshipHorizontalMovement = SpaceshipMovement.Stopped
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        spaceshipHorizontalMovement = SpaceshipMovement.stopped
         
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
        
        
     }

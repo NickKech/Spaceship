@@ -42,9 +42,9 @@ private func addPieces() {
       let yPos: CGFloat = 0
 
       /* Initializes the piece (Draws a rectangle) */
-      let piece = SKShapeNode(rectOfSize: CGSize(width: width, height: height))
+      let piece = SKShapeNode(rectOf: CGSize(width: width, height: height))
       /* Fill Color: Red */
-      piece.fillColor = SKColor.redColor()
+      piece.fillColor = SKColor.red
       /* Stroke Color: Dark Red */
       piece.strokeColor = SKColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
       /*  Piece's position*/

@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         initHUD()
         
         /* Show Start Game Message */
-        showMessage("StartGame")
+        showMessage(imagedNamed: "StartGame")
     }
     
     // MARK: - Game States
@@ -194,8 +194,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addEnemy(){
         /* 1 */
-        let start = CGPoint(x: randomBetween(0, max: UInt32(size.width)), y: size.height * 1.25)
-        let end = CGPoint(x: randomBetween(0, max: UInt32(size.width)), y: -100)
+        let start = CGPoint(x: randomBetween(min: 0, max: UInt32(size.width)), y: size.height * 1.25)
+        let end = CGPoint(x: randomBetween(min: 0, max: UInt32(size.width)), y: -100)
         
         /* 2 */
         let enemy = SKSpriteNode(imageNamed: "Enemy")
@@ -232,25 +232,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Fires Enemy */
         
-        enemyAutofire(enemy)
+        enemyAutofire(enemy: enemy)
         
     }
     
-    func enemyAutofire(_ enemy: SKSpriteNode) {
+    func enemyAutofire(enemy: SKSpriteNode) {
         /* 1 */
-        let secs = TimeInterval(randomBetween(1, max: 3))
+        let secs = TimeInterval(randomBetween(min: 1, max: 3))
         let wait = SKAction.wait(forDuration: secs)
         
         /* 2 */
         let fire = SKAction.run() {
-            self.addEnemyBullet(enemy)
+            self.addEnemyBullet(enemy: enemy)
         }
         
         /* 3 */
         run(SKAction.sequence([wait, fire]))
     }
     
-    func addEnemyBullet(_ enemy: SKSpriteNode) {
+    func addEnemyBullet(enemy: SKSpriteNode) {
         let bullet = SKSpriteNode(imageNamed: "EnemyBullet")
         bullet.name = "EnemyBullet"
         bullet.zPosition = zOrderValue.spaceship.rawValue
@@ -286,11 +286,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: - Library
-    func randomBetween(_ min: UInt32, max: UInt32) -> CGFloat {
+    func randomBetween(min: UInt32, max: UInt32) -> CGFloat {
         return CGFloat(arc4random_uniform(max + 1 - min) + min)
     }
     
-    func showMessage(_ imagedNamed: String) {
+    func showMessage(imagedNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(imageNamed: imagedNamed)
         panel.zPosition = zOrderValue.message.rawValue
@@ -362,22 +362,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if catA == ColliderCategory.enemy.rawValue && catB == ColliderCategory.spaceshipBullet.rawValue {
                 /* 2 */
-                bulletCollidesWithEnemy(nodeB, enemy: nodeA)
+                bulletCollidesWithEnemy(bullet: nodeB, enemy: nodeA)
             } else  if catB == ColliderCategory.enemy.rawValue && catA == ColliderCategory.spaceshipBullet.rawValue {
                 /* 2 */
-                bulletCollidesWithEnemy(nodeA, enemy: nodeB)
+                bulletCollidesWithEnemy(bullet: nodeA, enemy: nodeB)
             } else if catA == ColliderCategory.spaceship.rawValue && catB == ColliderCategory.enemy.rawValue {
                 /* 3 */
-                spaceshipCollidesWithEnemy(nodeB)
+                spaceshipCollidesWithEnemy(enemy: nodeB)
             } else if catB == ColliderCategory.spaceship.rawValue && catA == ColliderCategory.enemy.rawValue {
                 /* 3 */
-                spaceshipCollidesWithEnemy(nodeA)
+                spaceshipCollidesWithEnemy(enemy: nodeA)
             } else if catA == ColliderCategory.spaceship.rawValue && catB == ColliderCategory.enemyBullet.rawValue {
                 /* 4 */
-                bulletCollidesWithSpaceship(nodeB)
+                bulletCollidesWithSpaceship(bullet: nodeB)
             } else if catB == ColliderCategory.spaceship.rawValue && catA == ColliderCategory.enemyBullet.rawValue {
                 /* 4 */
-                bulletCollidesWithSpaceship(nodeA)
+                bulletCollidesWithSpaceship(bullet: nodeA)
             }
         }
         
@@ -388,7 +388,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score += 1
     }
     
-    func explosionAt(_ location: CGPoint, scale: CGFloat) {
+    func explosionAt(location: CGPoint, scale: CGFloat) {
         /* 1 */
         var textures = [SKTexture]()
         for index in 1 ... 5 {
@@ -414,9 +414,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func bulletCollidesWithEnemy(_ bullet: SKNode, enemy: SKNode) {
+    func bulletCollidesWithEnemy(bullet: SKNode, enemy: SKNode) {
         /* 1 */
-        explosionAt(enemy.position, scale: 0.75)
+        explosionAt(location: enemy.position, scale: 0.75)
         
         /* 2 */
         run(soundExplosion)
@@ -430,9 +430,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func spaceshipCollidesWithEnemy(_ enemy: SKNode) {
+    func spaceshipCollidesWithEnemy(enemy: SKNode) {
         /* 1 */
-        explosionAt(enemy.position, scale: 0.75)
+        explosionAt(location: enemy.position, scale: 0.75)
         
         /* 2 */
         run(soundExplosion)
@@ -444,7 +444,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         removeAction(forKey: "autofire")
         
         /* 5*/
-        explosionAt(spaceship.position, scale: 1.0)
+        explosionAt(location: spaceship.position, scale: 1.0)
         
         /* 6 */
         spaceship.removeFromParent()
@@ -461,9 +461,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func spaceshipCollidesEnemy(_ ship: SKNode, enemy: SKNode) {
+    func spaceshipCollidesEnemy(ship: SKNode, enemy: SKNode) {
         /* 1 */
-        explosionAt(enemy.position, scale: 0.75)
+        explosionAt(location: enemy.position, scale: 0.75)
         
         /* 2 */
         run(soundExplosion)
@@ -479,7 +479,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shieldProgressbar.empty()
         
         /* 5*/
-        explosionAt(ship.position, scale: 1.0)
+        explosionAt(location: ship.position, scale: 1.0)
         
         /* 6 */
         run(soundBigExplosion)
@@ -507,13 +507,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         /* 4 */
-        showMessage("GameOver")
+        showMessage(imagedNamed: "GameOver")
     }
     
     
-    func bulletCollidesSpaceship(_ bullet: SKNode, ship: SKNode) {
+    func bulletCollidesSpaceship(bullet: SKNode, ship: SKNode) {
         /* 1 */
-        explosionAt(bullet.position, scale: 0.25)
+        explosionAt(location: bullet.position, scale: 0.25)
         
         /* 2 */
         run(soundSmallExplosion)
@@ -524,7 +524,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Decrease shield's energy and check the energy*/
         if shieldProgressbar.decrease() <= 0 {
             /* 6 */
-            explosionAt(ship.position, scale: 1.0)
+            explosionAt(location: ship.position, scale: 1.0)
             
             /* 7 */
             run(soundBigExplosion)
@@ -536,9 +536,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func bulletCollidesWithSpaceship(_ bullet: SKNode) {
+    func bulletCollidesWithSpaceship(bullet: SKNode) {
         /* 1 */
-        explosionAt(bullet.position, scale: 0.25)
+        explosionAt(location: bullet.position, scale: 0.25)
         
         /* 2 */
         run(soundSmallExplosion)
@@ -549,7 +549,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Decrease shield's energy and check the energy*/
         if shieldProgressbar.decrease() <= 0 {
             /* 6 */
-            explosionAt(spaceship.position, scale: 1.0)
+            explosionAt(location: spaceship.position, scale: 1.0)
             
             /* 7 */
             run(soundBigExplosion)
@@ -594,7 +594,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func moveSpaceshipBy(_ distance: CGFloat) {
+    func moveSpaceshipBy(distance: CGFloat) {
         /* 1 */
         let maxX = size.width - spaceship.size.width / 2
         let minX = spaceship.size.width / 2
@@ -629,9 +629,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scrollBackground()
             
             if spaceshipHorizontalMovement == SpaceshipMovement.left {
-                moveSpaceshipBy(-spaceshipHorizontalSpeed)
+                moveSpaceshipBy(distance: -spaceshipHorizontalSpeed)
             } else if spaceshipHorizontalMovement == SpaceshipMovement.right {
-                moveSpaceshipBy(spaceshipHorizontalSpeed)
+                moveSpaceshipBy(distance: spaceshipHorizontalSpeed)
             }
         }
     }
